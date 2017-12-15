@@ -23,14 +23,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        //키보드에서 return(엔터)키가 눌릴때
-        print("textFieldShouldReturn")
+        //키보드에서 return(엔터)키가 눌릴때 키보드 내리기
+        nameTextField.resignFirstResponder()
         return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)  //바탕화면을 누르면 키보드 내려가도록 함
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameTextField.delegate = self
+        //nameTextField.delegate = self
         //textField에서 발생하는 이벤트에 대한 delegate 이벤트들을 나 자신한테 던져준다.
     }
 
