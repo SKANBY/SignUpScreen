@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var idTextField: UITextField!
@@ -22,9 +22,16 @@ class ViewController: UIViewController {
         resultTextView.text = "\(nameTextField.text!) 님 가입을 축하합니다."
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        //키보드에서 return(엔터)키가 눌릴때
+        print("textFieldShouldReturn")
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        nameTextField.delegate = self
+        //textField에서 발생하는 이벤트에 대한 delegate 이벤트들을 나 자신한테 던져준다.
     }
 
     override func didReceiveMemoryWarning() {
